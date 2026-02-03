@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .book-item {
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin: 8px 0;
+                border-radius: 5px;
+                background: #f9f9f9;
+                width: 50%;
+            }
+        </style>
+    </head>
+<body>
+  <div id="book-list">
+  </div>
+<script>
+    function loadBooks() {
+        fetch('book_catalog.xml')
+            .then(response => response.text())
+            .then(xmlString => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+                const books = xmlDoc.getElementsByTagName("book");
+                const bookList = document.getElementById("book-list");
+                bookList.innerHTML = "";
+
+                for (let i = 0; i < books.length; i++) {
+                    const title = books[i].getElementsByTagName("title")[0].textContent;
+                    const author = books[i].getElementsByTagName("author")[0].textContent;
+                    const genre = books[i].getElementsByTagName("genre")[0].textContent;
+                    const price = books[i].getElementsByTagName("price")[0].textContent;
+                    const currency = books[i].getElementsByTagName("price")[0].getAttribute("currency");
+                    const availability = books[i].getElementsByTagName("availability")[0].textContent;
+
+                    bookList.innerHTML += `
+                        <div class="book-item">
+                            <h3>${title}</h3>
+                            <p>Author: ${author}</p>
+                            <p>Genre: ${genre}</p>
+                            <p>Price: ${price} ${currency}</p>
+                            <p>Status: ${availability}</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(err => console.error("Error loading XML:", err));
+    }
+
+    window.onload = loadBooks;
+</script>
+</body>
+</html>

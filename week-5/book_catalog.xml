@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book id="1">
+        <title>Atomic Habits</title>
+        <author>James Clear</author>
+        <genre>Self-help</genre>
+        <price currency="USD">12.99</price>
+        <availability>In Stock</availability>
+    </book>
+    <book id="2">
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <genre>Programming</genre>
+        <price currency="USD">25.50</price>
+        <availability>In Stock</availability>
+    </book>
+    <book id="3">
+        <title>The Alchemist</title>
+        <author>Paulo Coelho</author>
+        <genre>Fiction</genre>
+        <price currency="USD">10.00</price>
+        <availability>Out of Stock</availability>
+    </book>
+    <book id="4">
+        <title>Introduction to Algorithms</title>
+        <author>Thomas H. Cormen</author>
+        <genre>Computer Science</genre>
+        <price currency="USD">45.00</price>
+        <availability>In Stock</availability>
+    </book>
+</catalog>
