@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body style="background-image: url('https://img.freepik.com/free-photo/flat-lay-bookmark-books-assortment_23-2149894329.jpg?semt=ais_hybrid&w=740&q=80');background-size: cover;">
+    <h2 style="text-align: center;">Cart</h2>
+    <div style="display: flex;justify-content: center;">
+        <ul id="c" style="background-color: white;width: 30%;padding: 1rem;"></ul>
+    </div>
+    <script>
+    let user = localStorage.getItem("currentUser");
+    let list = document.getElementById("c");
+    if(!user){
+    list.innerHTML = "<li>Please login first</li>";
+    }else{
+    let cart = JSON.parse(localStorage.getItem("cart_" + user)) || [];
+
+    if(cart.length === 0){
+        list.innerHTML = "<li>Cart is empty</li>";
+    }else{
+        cart.forEach(item=>{
+        let li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+        });
+    }
+    }
+    </script>
+</body>
+</html>

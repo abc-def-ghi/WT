@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Content</title>
+<style>
+body{
+  background-image: url('https://t4.ftcdn.net/jpg/08/15/12/67/360_F_815126755_FxzOzIcNv6eVSfCvNheaiUpu88T4eQUG.jpg');
+  height: 150vh;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 12px;
+}
+.book-card{
+  background-color: white;
+  padding: 12px;
+  margin: 12px;
+  width:26%;
+}
+button{
+  background-color: lightblue;
+  padding: 8px;
+  margin: 8px;
+  border-width: 0;
+}
+img{
+  width: 25vw;
+  height: 50vh;
+}
+h3{ color: black; }
+.main-card{
+  display: flex;
+  justify-content: center;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Fiction Books</h1>
+<p>Welcome to WT Bookstore!<br/>Find the books that you need to read...</p>
+
+<div class="main-card">
+  <div class="book-card">
+    <img src="https://m.media-amazon.com/images/I/81q77Q39nEL.jpg"/>
+    <h3>Harry Potter and the Philosopher's Stone</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+
+  <div class="book-card">
+    <img src="https://www.booksfortopics.com/wp-content/uploads/harry-potter-and-the-chamber-of-secrets.jpeg"/>
+    <h3>Harry Potter and the Chamber of Secrets</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+
+  <div class="book-card">
+    <img src="https://dauntbooks.co.uk/wp-content/uploads/2020/05/9781408855911.jpg.webp"/>
+    <h3>Harry Potter and the Prisoner of Azkaban</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+<div class="main-card">
+  <div class="book-card">
+    <img src="https://m.media-amazon.com/images/I/81zeKRGCPpL._AC_UF1000,1000_QL80_.jpg"/>
+    <h3>Harry Potter and the Goblet of Fire</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+
+  <div class="book-card">
+    <img src="https://m.media-amazon.com/images/I/81Budsu1XBL._AC_UF1000,1000_QL80_.jpg"/>
+    <h3>Harry Potter and the Order of Phoenix</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+
+  <div class="book-card">
+    <img src="https://m.media-amazon.com/images/I/81DN1723hUL.jpg"/>
+    <h3>Harry Potter and the Half-Blood Prince</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+<div class="main-card">
+  <div class="book-card">
+    <img src="https://m.media-amazon.com/images/I/914CT7iyyvL._AC_UF1000,1000_QL80_.jpg"/>
+    <h3>Harry Potter and the Deathly Hallows</h3>
+    <button onclick="viewBook(this)">View</button>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+function viewBook(btn){
+  let name = btn.parentElement.querySelector("h3").innerText;
+  window.location.href = "book.html?name=" + encodeURIComponent(name);
+}
+
+function addToCart(btn){
+  let user = localStorage.getItem("currentUser");
+  if(!user) return alert("Please login first");
+
+  let book = btn.parentElement.querySelector("h3").innerText;
+  let key = "cart_" + user;
+
+  let cart = JSON.parse(localStorage.getItem(key)) || [];
+  cart.push(book);
+
+  localStorage.setItem(key, JSON.stringify(cart));
+}
+
+</script>
+</body>
+</html>

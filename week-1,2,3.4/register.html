@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body style="background-image: url('https://wallpapers.com/images/hd/aesthetic-book-pictures-e4vykqr4w4m1cfst.jpg');background-size: cover;">
+<h2 style="text-align: center;">Register</h2>
+<div style="display: flex;justify-content: center;">
+  <form onsubmit="return validateRegister()" style="background-color: cadetblue;width: 25%;padding: 1rem;">
+    Email: <input type="email" id="email"><br><br>
+    Username: <input id="uname"><br><br>
+    Password: <input type="password" id="pwd"><br><br>
+    Confirm: <input type="password" id="cpwd"><br><br>
+    <div style="display: flex;justify-content: center;">
+      <button type="submit">Register</button>
+    </div>
+  </form>
+<p id="err" style="color:red"></p>
+</div>
+<script>
+  function validateRegister(){
+    let u=uname.value, p=pwd.value, c=cpwd.value, e=email.value;
+    if(u.length<5) return err.innerText="Username min 5 chars",false;
+    if(p.length<8) return err.innerText="Password min 8 chars",false;
+    if(p!==c) return err.innerText="Passwords mismatch",false;
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))
+      return err.innerText="Invalid email",false;
+
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+    users[u] = { password:p, email:e };
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Registered Successfully");
+    return true;
+  }
+</script>
+</body>
+</html>

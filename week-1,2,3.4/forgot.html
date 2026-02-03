@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body style="background-image: url('https://img.freepik.com/premium-photo/books-decorative-dried-flowers-glass-bottle_380164-275017.jpg?semt=ais_hybrid&w=740&q=80');background-size: cover;">
+<h2>Forgot Password</h2>
+<input id="email" placeholder="Enter Email">
+<button onclick="checkEmail()">Reset</button>
+<p id="msg"></p>
+
+<script>
+function checkEmail(){
+  let email = document.getElementById("email").value;
+  let users = JSON.parse(localStorage.getItem("users")) || {};
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return msg.innerText="Invalid email format";
+
+  msg.innerText = Object.values(users).some(u=>u.email===email)
+  ? "Reset link sent" : "Email not associated";
+}
+</script>
+</body>
+</html>

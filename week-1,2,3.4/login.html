@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body style="background-image: url('https://wallpapers.com/images/hd/aesthetic-book-pictures-e4vykqr4w4m1cfst.jpg');background-size: cover;">
+<h2 style="text-align: center;">Login</h2>
+<div style="display: flex;justify-content: center;">
+    <form style="background-color: cadetblue;width: 25%;padding: 1rem;">
+        Username: <input id="u"><br><br>
+        Password: <input type="password" id="p"><br><br>
+        <div style="display: flex;justify-content: center;">
+            <button onclick="login()">Login</button>
+        </div>
+    </form>
+    <p id="msg" style="color:red"></p>
+</div>
+<script>
+    function login(){
+        let users = JSON.parse(localStorage.getItem("users")) || {};
+        if(users[u.value] && users[u.value].password === p.value){
+            localStorage.setItem("currentUser", u.value);   // REQUIRED
+            msg.innerText = "Login successful";
+        } else msg.innerText = "Invalid credentials";
+    }
+</script>
+</body>
+</html>
