@@ -1,0 +1,12 @@
+<hibernate-mapping>
+    <class name="com.test.Book" table="books">
+
+        <id name="id" column="book_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="title" column="title" length="100" not-null="true"/>
+        <property name="author" column="author" length="100" not-null="true"/>
+
+    </class>
+</hibernate-mapping>
