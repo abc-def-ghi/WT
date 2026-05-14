@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VNRVJIET Product Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="logo.jpg" alt="VNRVJIET" class="logo" />
+      <div>
+        <p class="brand-kicker">VNRVJIET</p>
+        <h1>Product Hub</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="form" class="panel form-panel">
+      <div class="panel-header">
+        <h3 id="form-title">Add New Product</h3>
+        <button class="ghost" id="cancel-edit" type="button">Cancel Edit</button>
+      </div>
+      <form id="product-form" novalidate>
+        <div class="field">
+          <label for="name">Product Name</label>
+          <input id="name" name="name" type="text" placeholder="Notebook Pro" required />
+          <small class="error" data-error-for="name"></small>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" placeholder="Stationery" required />
+          <small class="error" data-error-for="category"></small>
+        </div>
+        <div class="field">
+          <label for="price">Price (INR)</label>
+          <input id="price" name="price" type="number" step="0.01" min="0.01" placeholder="249.00" required />
+          <small class="error" data-error-for="price"></small>
+        </div>
+        <button class="primary" type="submit">Save Product</button>
+        <p class="form-note" id="form-status"></p>
+      </form>
+    </section>
+
+    <section id="inventory" class="panel inventory-panel">
+      <div class="panel-header">
+        <h3>Current Inventory</h3>
+        <div class="search">
+          <input id="search" type="text" placeholder="Search by name or category" />
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="product-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built for VNRVJIET product management demos.</p>
+    <p class="muted">Hibernate + Java + MySQL</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
